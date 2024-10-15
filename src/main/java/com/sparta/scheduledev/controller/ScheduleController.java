@@ -12,28 +12,28 @@ import java.util.List;
 public class ScheduleController {
 
     // 일정 조회
-    @GetMapping("/schedules")
+    @GetMapping("/schedule")
     public List<ScheduleResponseDto> getSchedule() {
         ScheduleService scheduleService = new ScheduleService();
     }
 
     // 일정 등록
-    @PostMapping("/schedules")
-    public ScheduleResponseDto creatSchedule(ScheduleRequestDto scheduleRequestDto) {
+    @PostMapping("/schedule")
+    public ScheduleResponseDto creatSchedule(ScheduleRequestDto requestDto) {
         ScheduleService scheduleService = new ScheduleService(); // 매개변수 추가
-        return scheduleService.createSchedule(reqestDto);
+        return scheduleService.createSchedule(requestDto);
     }
 
 
     // 일정 수정
-    @PutMapping("/schedules/{id}")
+    @PutMapping("/schedule/{id}")
     public Long updateSchedule(@PathVariable Long id, @RequestBody ScheduleRequestDto requestDto) {
         ScheduleService scheduleService = new ScheduleService(); // 매개변수 추가
-        return scheduleService.updateSchdule(id, requestDto);
+        return scheduleService.updateSchedule(id, requestDto);
     }
 
     // 일정 삭제
-    @DeleteMapping("/schedules/{id}")
+    @DeleteMapping("/schedule/{id}")
     public Long deleteSchedule(@PathVariable Long id){
         ScheduleService scheduleService = new ScheduleService(); // 매개변수 추가
         return scheduleService.deleteSchedule(id);

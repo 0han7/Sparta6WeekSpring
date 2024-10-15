@@ -1,11 +1,17 @@
 package com.sparta.scheduledev.entity;
 
 
+import com.sparta.scheduledev.dto.ScheduleRequestDto;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "schedule")
-
+@NoArgsConstructor
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +33,21 @@ public class Schedule {
 
     @Column(name = "contents", nullable = false, length = 500)
     private String contents;
+
+    public Schedule(ScheduleRequestDto requestDto) {
+        this.username = requestDto.getUsername();
+        this.password = requestDto.getPassword();
+        this.title = requestDto.getTitle();
+        this.contents = requestDto.getContents();
+    }
+
+    public void update(ScheduleRequestDto requestDto) {
+        this.username = requestDto.getUsername();
+        this.password = requestDto.getPassword();
+        this.title = requestDto.getTitle();
+        this.contents = requestDto.getContents();
+
+    }
 
     // 수정일
     // 등록일
