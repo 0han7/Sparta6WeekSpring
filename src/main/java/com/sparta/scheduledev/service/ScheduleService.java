@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 public class ScheduleService {
 
@@ -17,8 +18,14 @@ public class ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
+    // 일정 조회
+    public List<ScheduleResponseDto> getSchedule() {
+        // DB 조회(최신 일정이 가장 상단에 나옴)
+        return scheduleRepository.findAllByOrderByModifiedAtDesc().stream().map(ScheduleResponseDto::new).toList();
+    }
+
     // 일정 등록
-    public ScheduleResponseDto createSchedule(ScheduleRequestDto requestDto){
+    public ScheduleResponseDto createSchedule(ScheduleRequestDto requestDto) {
         // RequestDto -> Entity
         Schedule schedule = new Schedule(requestDto);
 
@@ -29,12 +36,6 @@ public class ScheduleService {
         ScheduleResponseDto scheduleResponseDto = new ScheduleResponseDto(saveSchedule);
 
         return scheduleResponseDto;
-    }
-
-    // 일정 조회
-    public List<ScheduleResponseDto> getSchedule() {
-        // DB 조회(최신 일정이 가장 상단에 나옴)
-        return scheduleRepository.findAllByOrderByModifiedAtDesc().stream().map(ScheduleResponseDto::new).toList();
     }
 
 
@@ -63,9 +64,9 @@ public class ScheduleService {
     }
 
     // findSchedule
-    private Schedule findSchedule(Long id){
+    private Schedule findSchedule(Long id) {
         return scheduleRepository.findById(id).orElseThrow(() ->
-            new IllegalArgumentException("선택한 일정이 존재하지 않습니다.")
+                new IllegalArgumentException("선택한 일정이 존재하지 않습니다.")
         );
     }
 }
