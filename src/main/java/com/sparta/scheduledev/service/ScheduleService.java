@@ -33,8 +33,8 @@ public class ScheduleService {
 
     // 일정 조회
     public List<ScheduleResponseDto> getSchedule() {
-        // DB 조회
-        return scheduleRepository.findAll().stream().map(ScheduleResponseDto::new).toList();
+        // DB 조회(최신 일정이 가장 상단에 나옴)
+        return scheduleRepository.findAllByOrderByModifiedAtDesc().stream().map(ScheduleResponseDto::new).toList();
     }
 
 
