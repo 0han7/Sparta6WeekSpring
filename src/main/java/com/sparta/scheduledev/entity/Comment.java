@@ -26,20 +26,11 @@ public class Comment extends Timestamped{
     @Column(name = "contents", nullable = false, length = 500)
     private String contents;
 
-    // 등록일
-    @Column(name = "createdAt", nullable = false)
-    private LocalDateTime createdAt;
-
-    // 수정일
-    @Column(name = "modifiedAt", nullable = false)
-    private LocalDateTime modifiedAt;
 
 
     public Comment(CommentRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
-        this.createdAt = LocalDateTime.now(); // 생성 시점 기록
-        this.modifiedAt = LocalDateTime.now();
     }
 
 
@@ -47,7 +38,6 @@ public class Comment extends Timestamped{
     public void update(CommentRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
-        this.modifiedAt = LocalDateTime.now(); // 수정 시 업데이트
 
     }
 }

@@ -30,7 +30,7 @@ public class User extends Timestamped {
     private String password;
 
     // 이름
-    @Column(name = "username", nullable = false,length = 10)
+    @Column(name = "username", nullable = false, length = 10)
     private String username;
 
 
@@ -51,9 +51,6 @@ public class User extends Timestamped {
         this.password = requestDto.getPassword();
         this.username = requestDto.getUsername();
         this.email = requestDto.getEmail();
-        this.createdAt = LocalDateTime.now();
-        this.modifiedAt = LocalDateTime.now(); // 생성 시점과 동일해야 함
-
     }
 
 
@@ -62,7 +59,5 @@ public class User extends Timestamped {
         this.password = requestDto.getPassword();
         this.username = requestDto.getUsername();
         this.email = requestDto.getEmail();
-        this.modifiedAt = LocalDateTime.now(); // 생성 시점과 동일해야 함
-
     }
 }

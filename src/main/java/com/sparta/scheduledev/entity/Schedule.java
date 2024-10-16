@@ -39,14 +39,6 @@ public class Schedule extends Timestamped {
     @Column(name = "contents", nullable = false, length = 500)
     private String contents;
 
-    // 등록일
-    @Column(name = "createdAt", nullable = false)
-    private LocalDateTime createdAt;
-
-    // 수정일
-    @Column(name = "modifiedAt", nullable = false)
-    private LocalDateTime modifiedAt;
-
 
 
     public Schedule(ScheduleRequestDto requestDto) {
@@ -54,9 +46,6 @@ public class Schedule extends Timestamped {
         this.password = requestDto.getPassword();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
-        this.createdAt = LocalDateTime.now(); // 생성 시점 기록
-        this.modifiedAt = LocalDateTime.now(); // 생성 시점과 동일해야 함
-
     }
 
     public void update(ScheduleRequestDto requestDto) {
@@ -64,7 +53,5 @@ public class Schedule extends Timestamped {
         this.password = requestDto.getPassword();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
-        this.modifiedAt = LocalDateTime.now(); // 수정 시점 업데이트
-
     }
 }
