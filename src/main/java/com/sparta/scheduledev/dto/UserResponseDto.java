@@ -13,6 +13,7 @@ public class UserResponseDto {
     private String username;
     private String email;
     private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 
     public UserResponseDto(User user) {
         this.id = user.getId();
@@ -21,5 +22,7 @@ public class UserResponseDto {
         this.username = user.getUsername();
         this.email = user.getEmail();
         this.createdAt = user.getCreatedAt();
+        this.modifiedAt = user.getModifiedAt();
+
     }
 }

@@ -38,13 +38,6 @@ public class User extends Timestamped {
     @Column(name = "email", nullable = false, length = 20)
     private String email;
 
-    // 등록일
-    @Column(name = "createdAt", nullable = false)
-    private LocalDateTime createdAt;
-
-    // 수정일
-    @Column(name = "modifiedAt", nullable = false)
-    private LocalDateTime modifiedAt;
 
     public User(UserRequestDto requestDto) {
         this.login = requestDto.getLogin();
