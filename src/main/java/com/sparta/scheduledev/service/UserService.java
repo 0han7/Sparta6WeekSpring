@@ -39,6 +39,18 @@ public class UserService {
         return userResponseDto;
     }
 
+    // 유저 수정
+    public Long updateUser(Long id, UserRequestDto requestDto) {
+        // 해당 유저 DB확인
+        User user = findUser(id);
+
+        // 유저 변경
+        user.update(requestDto);
+
+        return id;
+    }
+
+
     // 유저 삭제
     public Long deleteUser(Long id) {
         // 해당 유저 DB 확인
@@ -56,4 +68,6 @@ public class UserService {
                 new IllegalArgumentException("선택한 유저가 존재하지 않습니다")
         );
     }
+
+
 }

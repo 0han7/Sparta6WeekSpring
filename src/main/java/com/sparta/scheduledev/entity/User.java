@@ -42,12 +42,27 @@ public class User extends Timestamped {
     @Column(name = "createdAt", nullable = false)
     private LocalDateTime createdAt;
 
+    // 수정일
+    @Column(name = "modifiedAt", nullable = false)
+    private LocalDateTime modifiedAt;
+
     public User(UserRequestDto requestDto) {
         this.login = requestDto.getLogin();
         this.password = requestDto.getPassword();
         this.username = requestDto.getUsername();
         this.email = requestDto.getEmail();
         this.createdAt = LocalDateTime.now();
+        this.modifiedAt = LocalDateTime.now(); // 생성 시점과 동일해야 함
+
+    }
+
+
+    public void update(UserRequestDto requestDto) {
+        this.login = requestDto.getLogin();
+        this.password = requestDto.getPassword();
+        this.username = requestDto.getUsername();
+        this.email = requestDto.getEmail();
+        this.modifiedAt = LocalDateTime.now(); // 생성 시점과 동일해야 함
 
     }
 }

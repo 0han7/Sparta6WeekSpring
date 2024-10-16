@@ -29,9 +29,17 @@ public class UserController {
         return userService.createUser(requestDto);
     }
 
+    // 유저 수정
+    @PutMapping("/user/{id}")
+    public Long updateUser(@PathVariable Long id, @RequestBody UserRequestDto requestDto) {
+        return userService.updateUser(id, requestDto);
+    }
+
     // 유저 삭제
     @DeleteMapping("/user/{id}")
     public Long deleteUser(@PathVariable Long id){
         return userService.deleteUser(id);
     }
+
+
 }
