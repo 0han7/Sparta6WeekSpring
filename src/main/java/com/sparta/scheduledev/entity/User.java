@@ -7,7 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,6 +38,13 @@ public class User extends Timestamped {
     // 이메일
     @Column(name = "email", nullable = false, length = 20)
     private String email;
+
+    // N대 M관계
+    @ManyToMany(mappedBy = "userList")
+    private List<Schedule> scheduleList = new ArrayList<>();
+
+
+
 
 
     public User(UserRequestDto requestDto) {

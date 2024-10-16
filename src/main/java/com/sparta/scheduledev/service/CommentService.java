@@ -3,19 +3,25 @@ package com.sparta.scheduledev.service;
 import com.sparta.scheduledev.dto.CommentRequestDto;
 import com.sparta.scheduledev.dto.CommentResponseDto;
 import com.sparta.scheduledev.entity.Comment;
+import com.sparta.scheduledev.entity.Schedule;
+import com.sparta.scheduledev.entity.User;
 import com.sparta.scheduledev.repository.CommentRepository;
+import com.sparta.scheduledev.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 public class CommentService {
 
 
     private final CommentRepository commentRepository;
+    private final ScheduleRepository scheduleRepository;
 
-    public CommentService(CommentRepository commentRepository) {
+    public CommentService(CommentRepository commentRepository, ScheduleRepository scheduleRepository) {
         this.commentRepository = commentRepository;
+        this.scheduleRepository = scheduleRepository;
     }
 
     // 댓글 조회
@@ -27,7 +33,11 @@ public class CommentService {
     // 댓글 등록
     public CommentResponseDto createComment(CommentRequestDto requestDto) {
         // RequestDto -> Entity
+        Schedule schedule = scheduleRepository.findById(requestDto.getScheduleId()).orElseThrow(() ->
+                new IllegalArgumentException("해당 일정이 없습니다."));
+
         Comment comment = new Comment(requestDto);
+        comment.setSchedule(schedule); // Schedule 연결
 
         // DB 저장
         Comment saveComment = commentRepository.save(comment);

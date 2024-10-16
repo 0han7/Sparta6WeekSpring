@@ -3,7 +3,9 @@ package com.sparta.scheduledev.service;
 import com.sparta.scheduledev.dto.ScheduleRequestDto;
 import com.sparta.scheduledev.dto.ScheduleResponseDto;
 import com.sparta.scheduledev.entity.Schedule;
+import com.sparta.scheduledev.entity.User;
 import com.sparta.scheduledev.repository.ScheduleRepository;
+import com.sparta.scheduledev.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,9 +15,11 @@ import java.util.List;
 public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
+    private final UserRepository userRepository;
 
-    public ScheduleService(ScheduleRepository scheduleRepository) {
+    public ScheduleService(ScheduleRepository scheduleRepository, UserRepository userRepository) {
         this.scheduleRepository = scheduleRepository;
+        this.userRepository = userRepository;
     }
 
     // 일정 조회
@@ -27,10 +31,15 @@ public class ScheduleService {
     // 일정 등록
     public ScheduleResponseDto createSchedule(ScheduleRequestDto requestDto) {
         // RequestDto -> Entity
+        User user = userRepository.findById(requestDto.getUserId()).orElseThrow(() ->
+                new IllegalArgumentException("유저 정보가 없습니다."));
+
         Schedule schedule = new Schedule(requestDto);
+        schedule.addUserList(user);
 
         // DB 저장
         Schedule saveSchedule = scheduleRepository.save(schedule);
+
 
         // Entity -> ResponseDto
         ScheduleResponseDto scheduleResponseDto = new ScheduleResponseDto(saveSchedule);

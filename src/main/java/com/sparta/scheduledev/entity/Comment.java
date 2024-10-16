@@ -6,14 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "comment")
 @NoArgsConstructor
-public class Comment extends Timestamped{
+public class Comment extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,12 +25,15 @@ public class Comment extends Timestamped{
     private String contents;
 
 
+    @ManyToOne
+    @JoinColumn(name = "schedule_Id")
+    private Schedule schedule;
+
 
     public Comment(CommentRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
     }
-
 
 
     public void update(CommentRequestDto requestDto) {

@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -37,6 +40,23 @@ public class Schedule extends Timestamped {
     @Column(name = "contents", nullable = false, length = 500)
     private String contents;
 
+    // 1대 N관계
+    @OneToMany(mappedBy = "schedule", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
+    private List<Comment> commentList = new ArrayList<>();
+
+
+    // N대 M관계
+    @ManyToMany
+    @JoinTable(name = "todoList",
+            joinColumns = @JoinColumn(name = "schedule_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> userList = new ArrayList<>();
+
+    // addUserList
+    public void addUserList(User user) {
+        this.userList.add(user); // 외래 키(연관 관계) 설정
+        user.getScheduleList().add(this);
+    }
 
 
     public Schedule(ScheduleRequestDto requestDto) {
