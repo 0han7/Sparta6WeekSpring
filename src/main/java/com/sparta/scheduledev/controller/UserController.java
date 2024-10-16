@@ -23,7 +23,7 @@ public class UserController {
         return userService.getUser();
     }
 
-    // 유저 저장
+    // 유저 생성
     @PostMapping("/user")
     public UserResponseDto createUser(@RequestBody UserRequestDto requestDto){
         return userService.createUser(requestDto);

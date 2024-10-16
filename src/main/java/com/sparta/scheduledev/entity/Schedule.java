@@ -41,12 +41,12 @@ public class Schedule extends Timestamped {
     private String contents;
 
     // 1대 N관계
-    @OneToMany(mappedBy = "schedule", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "schedule", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true,fetch = FetchType.LAZY)
     private List<Comment> commentList = new ArrayList<>();
 
 
     // N대 M관계
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "todoList",
             joinColumns = @JoinColumn(name = "schedule_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))

@@ -39,8 +39,10 @@ public class User extends Timestamped {
     @Column(name = "email", nullable = false, length = 20)
     private String email;
 
+
+
     // N대 M관계
-    @ManyToMany(mappedBy = "userList")
+    @ManyToMany(mappedBy = "userList", fetch = FetchType.LAZY)
     private List<Schedule> scheduleList = new ArrayList<>();
 
 
