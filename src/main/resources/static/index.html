@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일정 관리</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #login-form, #schedule-form, #schedule-list {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .schedule-item {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .schedule-item h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .comments-section {
+            margin-top: 20px;
+        }
+
+        .comment-item {
+            padding: 10px;
+            border: 1px solid #e1e1e1;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #comment-form textarea {
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 로그인 폼 -->
+<div id="login-form">
+    <h2>로그인</h2>
+    <label for="login">로그인 아이디</label>
+    <input type="text" id="login" name="login" placeholder="아이디를 입력하세요" required>
+
+    <label for="password">비밀번호</label>
+    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+
+    <button onclick="onLogin()">로그인</button>
+</div>
+
+<!-- 일정 관리 폼 -->
+<div id="schedule-form" style="display: none;">
+    <h2>새 일정 추가</h2>
+    <form onsubmit="return false;">
+        <label for="title">제목</label>
+        <input type="text" id="title" placeholder="일정 제목을 입력하세요" required>
+
+        <label for="contents">내용</label>
+        <textarea id="contents" placeholder="일정 내용을 입력하세요" required></textarea>
+
+        <button onclick="addSchedule()">일정 추가</button>
+    </form>
+</div>
+
+<!-- 일정 목록 -->
+<div id="schedule-list" style="display: none;">
+    <h2>일정 목록</h2>
+    <!-- 여기에 일정 목록이 추가될 예정 -->
+</div>
+
+<script>
+    // 로그인 함수
+    function onLogin() {
+        let login = document.getElementById('login').value;
+        let password = document.getElementById('password').value;
+
+        // 로그인 요청을 서버로 전송 (실제 API 연동 필요)
+        if (login && password) {
+            // 로그인 성공 시 일정 관리 화면 표시
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('schedule-form').style.display = 'block';
+            document.getElementById('schedule-list').style.display = 'block';
+        } else {
+            alert('로그인 정보를 입력해주세요.');
+        }
+    }
+
+    // 일정 추가 함수
+    function addSchedule() {
+        let title = document.getElementById('title').value;
+        let contents = document.getElementById('contents').value;
+
+        if (title && contents) {
+            let scheduleList = document.getElementById('schedule-list');
+
+            // 일정 항목 추가
+            let scheduleItem = document.createElement('div');
+            scheduleItem.className = 'schedule-item';
+            scheduleItem.innerHTML = `<h3>${title}</h3><p>${contents}</p>`;
+
+            // 댓글 추가 섹션
+            let commentSection = document.createElement('div');
+            commentSection.className = 'comments-section';
+            commentSection.innerHTML = `
+                <h4>댓글</h4>
+                <div class="comment-item">댓글 내용</div>
+                <form id="comment-form">
+                    <textarea id="new-comment" placeholder="댓글을 입력하세요"></textarea>
+                    <button type="submit" onclick="addComment(event, this)">댓글 추가</button>
+                </form>`;
+
+            scheduleItem.appendChild(commentSection);
+            scheduleList.appendChild(scheduleItem);
+
+            // 폼 초기화
+            document.getElementById('title').value = '';
+            document.getElementById('contents').value = '';
+        } else {
+            alert('제목과 내용을 입력해주세요.');
+        }
+    }
+
+    // 댓글 추가 함수
+    function addComment(event, form) {
+        event.preventDefault();
+
+        let commentText = form.querySelector('#new-comment').value;
+        if (commentText.trim()) {
+            let commentItem = document.createElement('div');
+            commentItem.className = 'comment-item';
+            commentItem.textContent = commentText;
+
+            // 댓글 추가
+            let commentsSection = form.parentNode.querySelector('.comments-section');
+            commentsSection.insertBefore(commentItem, form);
+
+            // 폼 초기화
+            form.querySelector('#new-comment').value = '';
+        } else {
+            alert('댓글 내용을 입력하세요.');
+        }
+    }
+</script>
+
+</body>
+</html>
