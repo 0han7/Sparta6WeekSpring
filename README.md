@@ -66,16 +66,11 @@
 | GET     | /api/schedule       | 일정 조회   | 없음                                                                               | ```json [ { "id": 1, "이름": "홍길동", "제목": "물 마시기", "내용": "물 1L마시기", "createdAt": "등록일", "modifiedAt": "수정일" }, { "id": 2, "이름": "김무명", "제목": "물 마시기", "내용": "물 1L마시기", "createdAt": "등록일", "modifiedAt": "수정일" } ] ```                        | 200 OK   |
 | POST    | /api/schedule       | 일정 등록   | ```json { "username": "홍길동", "password": "1234567w", "title": "물 마시기", "contents": "물 1L 마시기" } ``` | ```json { "id": 1, "username": "홍길동", "password": "1234567w", "title": "물 마시기", "contents": "물 1L 마시기", "createdAt": "2024-10-16T16:19:49.9352444", "modifiedAt": "2024-10-16T16:19:49.9352444" } ```                                 | 200 OK   |
 | PUT     | /api/schedule/{id}  | 일정 수정   | ```json { "username": "홍길동 수정", "password": "1234567w", "title": "물 마시기 수정", "contents": "물 1L 마시기 수정" } ``` | ```json { "id": 1, "username": "홍길동 수정", "password": "1234567w", "title": "물 마시기 수정", "contents": "물 1L 마시기 수정", "createdAt": "2024-10-16T16:19:49.9352444", "modifiedAt": "2024-10-16T16:19:49.9352444" } ```                     | 200 OK   |
-| DELETE  | /api/schedule/{id}  | 일정 삭제   | 없음  
+| DELETE  | /api/schedule/{id}  | 일정 삭제   | 없음  | 200 OK   |
 
 
 ### 댓글
-| 메서드   | URL                | 설명        | 요청 본문 (Request Body)                                                            | 응답 본문 (Response Body)       
-|--------|--------------|-----------------|-------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| GET     | /api/comment        | 댓글 조회   | 없음                                                                               | ```json [ { "id": 1, "username": "홍길동", "contents": "댓글테스트", "createdAt": "2024-00-00", "modifiedAt": "2024-00-00" }, { "id": 2, "username": "김무명", "contents": "댓글테스트", "createdAt": "2024-00-00", "modifiedAt": "2024-00-00" } ] ``` | 200 OK   |
-| POST    | /api/comment        | 댓글 생성   | ```json { "username": "홍길동", "contents": "댓글 테스트" } ```                      | ```json { "id": 1, "username": "홍길동", "contents": "댓글테스트", "createdAt": "2024-00-00", "modifiedAt": "2024-00-00" } ```                                                                                                                   | 200 OK   |
-| PUT     | /api/comment/{id}   | 댓글 수정   | ```json { "username": "홍길동", "contents": "댓글 수정 테스트" } ```                 | ```json { "id": 1, "username": "홍길동", "contents": "댓글 수정 테스트", "createdAt": "2024-00-00", "modifiedAt": "2024-00-00" } ```                                                                                                             | 200 OK   |
-| DELETE  | /api/comment/{id}   | 댓글 삭제   | 없음 
+
 
 ### 유저
 | 메서드 | URL          | 설명            | 요청 본문 (Request Body)                        | 응답 본문 (Response Body)                                                                                                                                                                                                                                                                                                | 응답 코드 |
@@ -83,7 +78,7 @@
 | GET    | /api/user    | 유저 조회       | 없음                                            | ```json [ { "id": 1, "login": "jdjHong", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com", "createdAt": "2024-10-16T16:47:52.0360414", "modifiedAt": "2024-10-16T16:47:52.0360414" }, { "id": 2, "login": "myKim", "password": "1234567w", "username": "김무명", "email": "myKim@email.com", "createdAt": "2024-10-16T16:47:52.0360414", "modifiedAt": "2024-10-16T16:47:52.0360414" } ] ``` | 200 OK   |
 | POST   | /api/user    | 유저 등록       | ```json { "login": "jdjHong", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com" } ``` | ```json { "id": 1, "login": "jdjHong", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com", "createdAt": "2024-10-16T16:47:52.0360414", "modifiedAt": "2024-10-16T16:47:52.0360414" } ```                                                                                                                                              | 200 OK   |
 | PUT    | /api/user/{id} | 유저 수정      | ```json { "login": "jdjHong2", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com" } ``` | ```json { "id": 1, "login": "jdjHong2", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com", "createdAt": "2024-10-16T16:47:52.0360414", "modifiedAt": "2024-10-16T16:47:52.0360414" } ```                                                                                                                                              | 200 OK   |
-| DELETE | /api/user/{id}  | 일정 삭제   | 없음  
+| DELETE | /api/user/{id}  | 일정 삭제   | 없음  | 200 OK   |
 
 
 
