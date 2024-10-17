@@ -1,17 +1,17 @@
 # 내일배움캠프 스프링 6주차 개인 과제 일정 알람 앱 서버 만들기
----
+
 ## 🖥️프로젝트 소개 
 스프링 3, 4주차 강의를 참고하여 만든 과제입니다.
----
+
 ## 📆개발 기간
 * 24.10.04 ~ 24.10.17
----
+
 ### 🖥️기술 스택
 <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"><img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"><img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white">
----
+
 ## 📌주요 기능 
----
+
 ### 1. 일정 CRUD 구현
 #### 1) 일정 생성(일정 작성하기)
 * 할일, 작성자명, 비밀번호, 작성/수정일을 저장할 수 있습니다.
