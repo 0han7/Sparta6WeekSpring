@@ -5,6 +5,7 @@ import com.sparta.scheduledev.dto.UserResponseDto;
 import com.sparta.scheduledev.entity.User;
 import com.sparta.scheduledev.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,7 +40,9 @@ public class UserService {
         return userResponseDto;
     }
 
+
     // 유저 수정
+    @Transactional
     public Long updateUser(Long id, UserRequestDto requestDto) {
         // 해당 유저 DB확인
         User user = findUser(id);
