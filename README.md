@@ -66,7 +66,7 @@
 | GET     | /api/schedule       | 일정 조회   | 없음                                                                               | ```json [ { "id": 1, "이름": "홍길동", "제목": "물 마시기", "내용": "물 1L마시기", "createdAt": "등록일", "modifiedAt": "수정일" }, { "id": 2, "이름": "김무명", "제목": "물 마시기", "내용": "물 1L마시기", "createdAt": "등록일", "modifiedAt": "수정일" } ] ```                        | 200 OK   |
 | POST    | /api/schedule       | 일정 등록   | ```json { "username": "홍길동", "password": "1234567w", "title": "물 마시기", "contents": "물 1L 마시기" } ``` | ```json { "id": 1, "username": "홍길동", "password": "1234567w", "title": "물 마시기", "contents": "물 1L 마시기", "createdAt": "2024-10-16T16:19:49.9352444", "modifiedAt": "2024-10-16T16:19:49.9352444" } ```                                 | 200 OK   |
 | PUT     | /api/schedule/{id}  | 일정 수정   | ```json { "username": "홍길동 수정", "password": "1234567w", "title": "물 마시기 수정", "contents": "물 1L 마시기 수정" } ``` | ```json { "id": 1, "username": "홍길동 수정", "password": "1234567w", "title": "물 마시기 수정", "contents": "물 1L 마시기 수정", "createdAt": "2024-10-16T16:19:49.9352444", "modifiedAt": "2024-10-16T16:19:49.9352444" } ```                     | 200 OK   |
-| DELETE  | /api/schedule/{id}  | 일정 삭제   | 없음  | 200 OK   |
+| DELETE  | /api/schedule/{id}   | 일정 삭제   | 없음                                                       | 없음                                                                                                                                                                                                                        | 200 OK   |
 
 
 ### 댓글
