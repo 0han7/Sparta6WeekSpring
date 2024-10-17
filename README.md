@@ -68,6 +68,8 @@
 | PUT     | /api/schedule/{id}  | 일정 수정   | ```json { "username": "홍길동 수정", "password": "1234567w", "title": "물 마시기 수정", "contents": "물 1L 마시기 수정" } ``` | ```json { "id": 1, "username": "홍길동 수정", "password": "1234567w", "title": "물 마시기 수정", "contents": "물 1L 마시기 수정", "createdAt": "2024-10-16T16:19:49.9352444", "modifiedAt": "2024-10-16T16:19:49.9352444" } ```                     | 200 OK   |
 | DELETE  | /api/schedule/{id}   | 일정 삭제   | 없음                                                       | 없음                                                                                                                                                                                                                        | 200 OK   |
 
+![스크린샷 2024-10-17 112657](https://github.com/user-attachments/assets/6e30276f-7318-46d2-8c27-7e6351f842c3)
+
 
 ### 댓글
 | 메서드   | URL                | 설명        | 요청 본문 (Request Body)                                    | 응답 본문 (Response Body)                                                                                                                                                                                                 | 응답 코드 |
@@ -77,14 +79,18 @@
 | PUT     | /api/comment/{id}   | 댓글 수정   | ```json { "username": "홍길동", "contents": "댓글 수정 테스트" } ``` | ```json { "id": 1, "username": "홍길동", "contents": "댓글 수정 테스트", "createdAt": "2024-00-00", "modifiedAt": "2024-00-00" } ```                                                                                       | 200 OK   |
 | DELETE  | /api/comment/{id}   | 댓글 삭제   | 없음                                                       | 없음                                                                                                                                                                                                                        | 200 OK   |
 
+![스크린샷 2024-10-17 112703](https://github.com/user-attachments/assets/fe2c209e-2157-46ea-b0d4-0cb82b3530c5)
+
+
 ### 유저
 | 메서드 | URL          | 설명            | 요청 본문 (Request Body)                        | 응답 본문 (Response Body)                                                                                                                                                                                                                                                                                                | 응답 코드 |
 |--------|--------------|-----------------|-------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | GET    | /api/user    | 유저 조회       | 없음                                            | ```json [ { "id": 1, "login": "jdjHong", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com", "createdAt": "2024-10-16T16:47:52.0360414", "modifiedAt": "2024-10-16T16:47:52.0360414" }, { "id": 2, "login": "myKim", "password": "1234567w", "username": "김무명", "email": "myKim@email.com", "createdAt": "2024-10-16T16:47:52.0360414", "modifiedAt": "2024-10-16T16:47:52.0360414" } ] ``` | 200 OK   |
 | POST   | /api/user    | 유저 등록       | ```json { "login": "jdjHong", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com" } ``` | ```json { "id": 1, "login": "jdjHong", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com", "createdAt": "2024-10-16T16:47:52.0360414", "modifiedAt": "2024-10-16T16:47:52.0360414" } ```                                                                                                                                              | 200 OK   |
 | PUT    | /api/user/{id} | 유저 수정      | ```json { "login": "jdjHong2", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com" } ``` | ```json { "id": 1, "login": "jdjHong2", "password": "1234567w", "username": "홍길동", "email": "jdjHong@email.com", "createdAt": "2024-10-16T16:47:52.0360414", "modifiedAt": "2024-10-16T16:47:52.0360414" } ```                                                                                                                                              | 200 OK   |
-| DELETE | /api/user/{id}  | 일정 삭제   | 없음  | 200 OK   |
+| DELETE  | /api/user/{id}   | 유저 삭제   | 없음                                                       | 없음                                                                                                                                                                                                                        | 200 OK   |
 
+![스크린샷 2024-10-17 112708](https://github.com/user-attachments/assets/5407c499-edb5-4e12-a2c5-5dfb0cd6038a)
 
 
 
