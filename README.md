@@ -1,14 +1,17 @@
 # 내일배움캠프 스프링 6주차 개인 과제 일정 알람 앱 서버 만들기
+---
 ## 🖥️프로젝트 소개 
 스프링 3, 4주차 강의를 참고하여 만든 과제입니다.
+---
 ## 📆개발 기간
 * 24.10.04 ~ 24.10.17
-### 기술 스택
+---
+### 🖥️기술 스택
 <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"><img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"><img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white">
-  
-## ⭐주요 기능⭐ 
-
+---
+## 📌주요 기능 
+---
 ### 1. 일정 CRUD 구현
 #### 1) 일정 생성(일정 작성하기)
 * 할일, 작성자명, 비밀번호, 작성/수정일을 저장할 수 있습니다.
@@ -43,6 +46,7 @@
 #### 3) 유저 수정 및 삭제
 * 선택한 유저를 수정 및 삭제할 수 있습니다.
 
+---
 
 ## 미완성한 부분
 ### 1. 선택 일정 조회(선택한 일정 정보 불러오기)(미완성)
@@ -53,7 +57,7 @@
 
 ### 3. html (미완)
 * postman에는 작동이 되지만, HTML이 미완성이라 웹 사이트에서의 구현은 하지 못했습니다.
-
+---
 ## API 명세서- 일정 관리 시스템
 #### 노션 API 명세서 URL : https://giddy-ox-904.notion.site/API-1214bd51dfda800cae6aec06860dc56d?pvs=4
 
